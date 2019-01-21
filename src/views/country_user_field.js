@@ -6,7 +6,7 @@ const CountryUserField = function (selectElement) {
 
 
 CountryUserField.prototype.bindEvents = function () {
-  PubSub.subscribe('County:countries-data-ready', (evt) => {
+  PubSub.subscribe('Country:countries-data-ready', (evt) => {
     this.populate(evt.detail)
   });
 
@@ -14,19 +14,22 @@ CountryUserField.prototype.bindEvents = function () {
       const selectedIndex = evt.target.value;
       PubSub.publish('CountryUserField:change', selectedIndex);
     })
-  };
+};
 
 CountryUserField.prototype.populate = function (country) {
     country.forEach((country, index) => {
       const countryOption = this.createOption(country.name, index);
       this.element.appendChild(countryOption);
     });
-  };
+};
 
-  CountryUserField.prototype.createOption = function (name, index) {
+CountryUserField.prototype.createOption = function (name, index) {
   const option = document.createElement('option');
   option.textContent = name;
   option.value = index;
   return option;
 };
+
+
+
 module.exports = CountryUserField;

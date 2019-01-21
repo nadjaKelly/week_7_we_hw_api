@@ -30,10 +30,17 @@ Country.prototype.getData = function () {
   //    console.error(err);
   //  })
 
+
+  Country.prototype.getData = function () {
+    const myRequest = new RequestHelper(this.url);
+    const myPromise = myRequest.get();
+    myPromise.then(data => this.handleData(data));
+  };
+
 Country.prototype.handleData = function (data) {
   this.country = data;
   PubSub.publish('Country:countries-data-ready', this.country);
 };
 
 
-module.exports = Countries;
+module.exports = Country;

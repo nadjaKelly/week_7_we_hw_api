@@ -6,14 +6,14 @@ const Country = require('./models/country.js');
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  //console.log('JavaScript loaded');
+  console.log('JavaScript loaded');
   const selectElement = document.querySelector('select#countries');
   const countryUserField = new CountryUserField(selectElement);
-  CountryUserField.bindEvents();
+  countryUserField.bindEvents();
 
   const countryContainer = document.querySelector('#country');
     const countryInfoDisplay= new CountryInfoDisplay(countryContainer);
-    CountryInfoDisplay.bindEvents();
+    countryInfoDisplay.bindEvents();
 
     const country = new Country('https://restcountries.eu/rest/v2/all');
      country.bindEvents();

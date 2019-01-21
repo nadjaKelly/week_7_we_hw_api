@@ -49,7 +49,7 @@ CountryInfoDisplay.prototype.populateLanguageList = function (languages, list) {
   });
 };
 
-CountryView.prototype.clearCountry = function () {
+CountryInfoDisplay.prototype.clearCountry = function () {
   this.container.innerHTML = '';
 };
 
